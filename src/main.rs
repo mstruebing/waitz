@@ -56,7 +56,7 @@ fn main() {
     }
 }
 
-fn wait_for(command: &str, args: &Vec<&str>) -> bool {
+fn wait_for(command: &str, args: &[&str]) -> bool {
     let exit_code = get_exit_code(command, args);
 
     match exit_code {
@@ -65,7 +65,7 @@ fn wait_for(command: &str, args: &Vec<&str>) -> bool {
     }
 }
 
-fn get_exit_code(command: &str, args: &Vec<&str>) -> Result<ExitStatus, io::Error> {
+fn get_exit_code(command: &str, args: &[&str]) -> Result<ExitStatus, io::Error> {
     let output = Command::new(command).args(args).output()?;
     Ok(output.status)
 }
