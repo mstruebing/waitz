@@ -4,12 +4,14 @@
 
 **Implemented enhancements:**
 
+- add debug flag [\#8](https://github.com/mstruebing/wait-for/issues/8)
 - add verbose flag [\#7](https://github.com/mstruebing/wait-for/issues/7)
 - add automatic changelog generation [\#4](https://github.com/mstruebing/wait-for/issues/4)
 - CI Pipeline [\#1](https://github.com/mstruebing/wait-for/issues/1)
 
 **Merged pull requests:**
 
+- feat: add debug flag [\#11](https://github.com/mstruebing/wait-for/pull/11)
 - feat: add verbose flag [\#10](https://github.com/mstruebing/wait-for/pull/10)
 - ci: add commitlint [\#9](https://github.com/mstruebing/wait-for/pull/9)
 - ci: add pipeline [\#6](https://github.com/mstruebing/wait-for/pull/6)
