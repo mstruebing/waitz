@@ -3,6 +3,8 @@ use std::io;
 use std::process::{Command, ExitStatus};
 use std::{thread, time};
 
+mod logger;
+
 fn main() {
     let matches = App::new("wait-for")
         .version("0.1.0")
@@ -27,6 +29,14 @@ fn main() {
                 .help("Don't try to rerun the command in case it fails with non-zero exit code"),
         )
         .arg(
+            Arg::with_name("verbose")
+                .long("verbose")
+                .value_name("verbose")
+                .takes_value(false)
+                .required(false)
+                .help("Outputs verbose information"),
+        )
+        .arg(
             Arg::with_name("COMMAND")
                 .help("Which command should be waited for")
                 .required(true)
@@ -42,26 +52,40 @@ fn main() {
 
     let no_retry = matches.is_present("no-retry");
 
+    let verbose = matches.is_present("verbose");
+    let logger = logger::Logger { verbose };
+
     let mut original_args = matches.values_of("COMMAND").unwrap();
     let command = original_args.next().unwrap();
     let args: Vec<&str> = original_args.collect();
 
     if no_retry {
-        wait_for(command, &args);
+        wait_for(command, &args, &logger);
         return;
     }
 
-    while !wait_for(command, &args) {
-        thread::sleep(time::Duration::from_millis(interval))
+    while !wait_for(command, &args, &logger) {
+        logger.verbose(&format!(
+            "Wait for {:?} milliseconds to run again",
+            interval
+        ));
+        thread::sleep(time::Duration::from_millis(interval));
     }
 }
 
-fn wait_for(command: &str, args: &[&str]) -> bool {
+fn wait_for(command: &str, args: &[&str], logger: &logger::Logger) -> bool {
+    logger.verbose(&format!("Running {} {}", command, args.join(" ")));
     let exit_code = get_exit_code(command, args);
 
     match exit_code {
-        Ok(code) => code.success(),
-        Err(_err) => false,
+        Ok(code) => {
+            logger.verbose("Command exited successful");
+            code.success()
+        }
+        Err(_err) => {
+            logger.verbose("Command exited unsuccessful");
+            false
+        }
     }
 }
 
