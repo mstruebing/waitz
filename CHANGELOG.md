@@ -9,8 +9,13 @@
 - add automatic changelog generation [\#4](https://github.com/mstruebing/wait-for/issues/4)
 - CI Pipeline [\#1](https://github.com/mstruebing/wait-for/issues/1)
 
+**Documentation:**
+
+- documentation [\#3](https://github.com/mstruebing/wait-for/issues/3)
+
 **Merged pull requests:**
 
+- docs: add readme [\#12](https://github.com/mstruebing/wait-for/pull/12)
 - feat: add debug flag [\#11](https://github.com/mstruebing/wait-for/pull/11)
 - feat: add verbose flag [\#10](https://github.com/mstruebing/wait-for/pull/10)
 - ci: add commitlint [\#9](https://github.com/mstruebing/wait-for/pull/9)
