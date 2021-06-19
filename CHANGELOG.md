@@ -13,8 +13,13 @@
 
 - documentation [\#3](https://github.com/mstruebing/wait-for/issues/3)
 
+**Closed issues:**
+
+- refactor: make wait\_for an own module [\#13](https://github.com/mstruebing/wait-for/issues/13)
+
 **Merged pull requests:**
 
+- refactor: make `wait\_for` an own module [\#14](https://github.com/mstruebing/wait-for/pull/14)
 - docs: add readme [\#12](https://github.com/mstruebing/wait-for/pull/12)
 - feat: add debug flag [\#11](https://github.com/mstruebing/wait-for/pull/11)
 - feat: add verbose flag [\#10](https://github.com/mstruebing/wait-for/pull/10)
