@@ -1,9 +1,10 @@
 use clap::{App, Arg};
-use std::io;
-use std::process::{Command, ExitStatus};
-use std::{thread, time};
 
 mod logger;
+mod wait_for;
+
+use crate::logger::Logger;
+use crate::wait_for::WaitFor;
 
 fn main() {
     let matches = App::new("wait-for")
@@ -62,7 +63,7 @@ fn main() {
 
     let verbose = matches.is_present("verbose");
     let debug = matches.is_present("debug");
-    let logger = logger::Logger { verbose, debug };
+    let logger = Logger { verbose, debug };
 
     logger.debug(&format!("Got args: {:?}", matches));
 
@@ -70,38 +71,13 @@ fn main() {
     let command = original_args.next().unwrap();
     let args: Vec<&str> = original_args.collect();
 
-    if no_retry {
-        wait_for(command, &args, &logger);
-        return;
-    }
+    let wait_for = WaitFor {
+        command,
+        args,
+        interval,
+        no_retry,
+        logger,
+    };
 
-    while !wait_for(command, &args, &logger) {
-        logger.verbose(&format!(
-            "Wait for {:?} milliseconds to run again",
-            interval
-        ));
-        thread::sleep(time::Duration::from_millis(interval));
-    }
-}
-
-fn wait_for(command: &str, args: &[&str], logger: &logger::Logger) -> bool {
-    logger.verbose(&format!("Running {} {}", command, args.join(" ")));
-    let exit_code = get_exit_code(command, args);
-    logger.debug(&format!("Got exit code: {:?}", exit_code));
-
-    match exit_code {
-        Ok(code) => {
-            logger.verbose("Command exited successful");
-            code.success()
-        }
-        Err(_err) => {
-            logger.verbose("Command exited unsuccessful");
-            false
-        }
-    }
-}
-
-fn get_exit_code(command: &str, args: &[&str]) -> Result<ExitStatus, io::Error> {
-    let output = Command::new(command).args(args).output()?;
-    Ok(output.status)
+    wait_for.run();
 }
