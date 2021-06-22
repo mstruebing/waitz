@@ -7,6 +7,7 @@
 - add debug flag [\#8](https://github.com/mstruebing/wait-for/issues/8)
 - add verbose flag [\#7](https://github.com/mstruebing/wait-for/issues/7)
 - add automatic changelog generation [\#4](https://github.com/mstruebing/wait-for/issues/4)
+- error handling [\#2](https://github.com/mstruebing/wait-for/issues/2)
 - CI Pipeline [\#1](https://github.com/mstruebing/wait-for/issues/1)
 
 **Documentation:**
@@ -19,6 +20,7 @@
 
 **Merged pull requests:**
 
+- Feat/2/errors [\#15](https://github.com/mstruebing/wait-for/pull/15)
 - refactor: make `wait\_for` an own module [\#14](https://github.com/mstruebing/wait-for/pull/14)
 - docs: add readme [\#12](https://github.com/mstruebing/wait-for/pull/12)
 - feat: add debug flag [\#11](https://github.com/mstruebing/wait-for/pull/11)
