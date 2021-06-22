@@ -4,6 +4,7 @@ use std::{thread, time};
 
 use crate::logger::Logger;
 
+#[derive(Debug)]
 pub struct WaitFor<'a> {
     pub command: &'a str,
     pub args: Vec<&'a str>,
@@ -14,6 +15,8 @@ pub struct WaitFor<'a> {
 
 impl WaitFor<'_> {
     pub fn run(&self) {
+        self.logger.debug(&format!("{:?}", &self));
+
         if self.no_retry {
             wait_for(self.command, &self.args, &self.logger);
             return;

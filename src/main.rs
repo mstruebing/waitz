@@ -53,6 +53,12 @@ fn main() {
         )
         .get_matches();
 
+    let verbose = matches.is_present("verbose");
+    let debug = matches.is_present("debug");
+    let logger = Logger { verbose, debug };
+
+    logger.debug(&format!("Got args: {:?}", matches));
+
     let interval = matches
         .value_of("interval")
         .unwrap()
@@ -60,12 +66,6 @@ fn main() {
         .unwrap();
 
     let no_retry = matches.is_present("no-retry");
-
-    let verbose = matches.is_present("verbose");
-    let debug = matches.is_present("debug");
-    let logger = Logger { verbose, debug };
-
-    logger.debug(&format!("Got args: {:?}", matches));
 
     let mut original_args = matches.values_of("COMMAND").unwrap();
     let command = original_args.next().unwrap();
