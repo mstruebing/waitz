@@ -3,16 +3,14 @@
 A rust utility to wait that a program exits with 0.
 
 You need to wait for something to start up and don't know when it finishes?
-You want to chain some other commands after it?
+You want to chain some other commands after it? You want to run a bunch of commands and drink a coffee?
+Than this is a tool for you.
 
-I've wrote it so that I can start docker, wait for it to boot up and run some commands once it's started
-without the need to finish:
+I initially wrote it to start docker and run some processes after it, but you can do way more with it,
+like waiting for a specific URL to become available after booting up a server in the background or anything else.
 
-Just run: `wait-for docker ps && npm run <script> && npm run <other-script>` or anything alike.
-
-Or you want to run something when an URL becomes available:
-
-`wait-for 'curl --fail <non-existing-url>' && ./script.sh `
+- `wait-for docker ps && npm run <script> && npm run <other-script>`
+- `wait-for 'curl --fail <non-existing-url>' && ./script.sh`
 
 # Usage
 
@@ -37,6 +35,16 @@ OPTIONS:
 ARGS:
     <COMMAND>...    Which command should be waited for
 ```
+
+# Installation
+
+# Crates.io
+
+`cargo install wait-for`
+
+# Raw
+
+Clone the repo and run `cargo build --release` and you should find the binary as `./target/release/wait-for`.
 
 # Contribution
 

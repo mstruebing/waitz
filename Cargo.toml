@@ -3,6 +3,11 @@ name = "wait-for"
 version = "0.1.0"
 authors = ["Max Strübing <mxstrbng@gmail.com>"]
 edition = "2018"
+description = "Waits (retries) a command until it exits with 0"
+repository = "https://github.com/mstruebing/wait-for"
+homepage = "https://github.com/mstruebing/wait-for"
+license = "MIT"
+categories = ["command-line-utilities", "development-tools"]
 
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
