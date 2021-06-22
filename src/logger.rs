@@ -1,3 +1,4 @@
+#[derive(Debug)]
 pub struct Logger {
     pub verbose: bool,
     pub debug: bool,

@@ -1,7 +1,7 @@
-use std::io;
 use std::process::{Command, ExitStatus};
 use std::{thread, time};
 
+use crate::error::Result;
 use crate::logger::Logger;
 
 #[derive(Debug)]
@@ -18,11 +18,11 @@ impl WaitFor<'_> {
         self.logger.debug(&format!("{:?}", &self));
 
         if self.no_retry {
-            wait_for(self.command, &self.args, &self.logger);
+            is_successful(self.command, &self.args, &self.logger);
             return;
         }
 
-        while !wait_for(self.command, &self.args, &self.logger) {
+        while !is_successful(self.command, &self.args, &self.logger) {
             self.logger.verbose(&format!(
                 "Wait for {:?} milliseconds to run again",
                 self.interval
@@ -32,7 +32,7 @@ impl WaitFor<'_> {
     }
 }
 
-fn wait_for(command: &str, args: &[&str], logger: &Logger) -> bool {
+fn is_successful(command: &str, args: &[&str], logger: &Logger) -> bool {
     logger.verbose(&format!("Running {} {}", command, args.join(" ")));
     let exit_code = get_exit_code(command, args);
     logger.debug(&format!("Got exit code: {:?}", exit_code));
@@ -49,7 +49,7 @@ fn wait_for(command: &str, args: &[&str], logger: &Logger) -> bool {
     }
 }
 
-fn get_exit_code(command: &str, args: &[&str]) -> Result<ExitStatus, io::Error> {
+fn get_exit_code(command: &str, args: &[&str]) -> Result<ExitStatus> {
     let output = Command::new(command).args(args).output()?;
     Ok(output.status)
 }
