@@ -1,12 +1,14 @@
 use clap::{App, Arg};
 
+mod error;
 mod logger;
 mod wait_for;
 
+use crate::error::{Error, Result};
 use crate::logger::Logger;
 use crate::wait_for::WaitFor;
 
-fn main() {
+fn main() -> Result<()> {
     let matches = App::new("wait-for")
         .version("0.1.0")
         .author("Max Strübing <mxstrbng@gmail.com>")
@@ -53,22 +55,27 @@ fn main() {
         )
         .get_matches();
 
-    let interval = matches
-        .value_of("interval")
-        .unwrap()
-        .parse::<u64>()
-        .unwrap();
-
-    let no_retry = matches.is_present("no-retry");
-
     let verbose = matches.is_present("verbose");
     let debug = matches.is_present("debug");
     let logger = Logger { verbose, debug };
 
     logger.debug(&format!("Got args: {:?}", matches));
 
-    let mut original_args = matches.values_of("COMMAND").unwrap();
-    let command = original_args.next().unwrap();
+    let interval = matches
+        .value_of("interval")
+        .ok_or_else(|| Error::NoneError("Could not get interval".to_owned()))?
+        .parse::<u64>()?;
+
+    let no_retry = matches.is_present("no-retry");
+
+    let mut original_args = matches
+        .values_of("COMMAND")
+        .ok_or_else(|| Error::NoneError("Could not get argguments for COMMAND".to_owned()))?;
+
+    let command = original_args
+        .next()
+        .ok_or_else(|| Error::NoneError("Could not get command".to_owned()))?;
+
     let args: Vec<&str> = original_args.collect();
 
     let wait_for = WaitFor {
@@ -80,4 +87,5 @@ fn main() {
     };
 
     wait_for.run();
+    Ok(())
 }
