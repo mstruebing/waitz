@@ -15,7 +15,7 @@ like waiting for a specific URL to become available after booting up a server in
 # Usage
 
 ```
-waitz 0.1.0
+waitz 0.2.0
 Max Strübing <mxstrbng@gmail.com>
 Waits until the exit code of a program is zero
 
