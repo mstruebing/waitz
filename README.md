@@ -38,13 +38,17 @@ ARGS:
 
 # Installation
 
-# Crates.io
+## Crates.io
 
 `cargo install waitz`
 
-# Raw
+## Raw
 
 Clone the repository and run `cargo build --release` and you should find the binary in `./target/release/waitz`.
+
+## Release Page
+
+Or grab a binary from the [release page](https://github.com/mstruebing/waitz/releases)
 
 # Contribution
 
