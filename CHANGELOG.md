@@ -1,5 +1,12 @@
 # Changelog
 
+## [Unreleased](https://github.com/mstruebing/waitz/tree/HEAD)
+
+**Merged pull requests:**
+
+- refactor: use information from cargo.toml [\#18](https://github.com/mstruebing/waitz/pull/18)
+- docs: mention release page to grab a binary [\#17](https://github.com/mstruebing/waitz/pull/17)
+
 ## [0.2.0](https://github.com/mstruebing/waitz/tree/0.2.0) (2021-06-23)
 
 **Implemented enhancements:**
