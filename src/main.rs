@@ -2,14 +2,14 @@ use clap::{App, Arg};
 
 mod error;
 mod logger;
-mod wait_for;
+mod waitz;
 
 use crate::error::{Error, Result};
 use crate::logger::Logger;
-use crate::wait_for::WaitFor;
+use crate::waitz::Waitz;
 
 fn main() -> Result<()> {
-    let matches = App::new("wait-for")
+    let matches = App::new("waitz")
         .version("0.1.0")
         .author("Max Strübing <mxstrbng@gmail.com>")
         .about("Waits until the exit code of a program is zero")
@@ -78,7 +78,7 @@ fn main() -> Result<()> {
 
     let args: Vec<&str> = original_args.collect();
 
-    let wait_for = WaitFor {
+    let waitz = Waitz {
         command,
         args,
         interval,
@@ -86,6 +86,6 @@ fn main() -> Result<()> {
         logger,
     };
 
-    wait_for.run();
+    waitz.run();
     Ok(())
 }

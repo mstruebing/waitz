@@ -1,4 +1,4 @@
-# Wait-For
+# Waitz
 
 A rust utility to wait that a program exits with 0.
 
@@ -9,18 +9,18 @@ Than this is a tool for you.
 I initially wrote it to start docker and run some processes after it, but you can do way more with it,
 like waiting for a specific URL to become available after booting up a server in the background or anything else.
 
-- `wait-for docker ps && npm run <script> && npm run <other-script>`
-- `wait-for 'curl --fail <non-existing-url>' && ./script.sh`
+- `waitz docker ps && npm run <script> && npm run <other-script>`
+- `waitz 'curl --fail <non-existing-url>' && ./script.sh`
 
 # Usage
 
 ```
-wait-for 0.1.0
+waitz 0.1.0
 Max Strübing <mxstrbng@gmail.com>
 Waits until the exit code of a program is zero
 
 USAGE:
-    wait-for [FLAGS] [OPTIONS] <COMMAND>...
+    waitz [FLAGS] [OPTIONS] <COMMAND>...
 
 FLAGS:
         --debug       Outputs debug information
@@ -40,11 +40,11 @@ ARGS:
 
 # Crates.io
 
-`cargo install wait-for`
+`cargo install waitz`
 
 # Raw
 
-Clone the repo and run `cargo build --release` and you should find the binary as `./target/release/wait-for`.
+Clone the repository and run `cargo build --release` and you should find the binary in `./target/release/waitz`.
 
 # Contribution
 

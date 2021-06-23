@@ -5,7 +5,7 @@ use crate::error::Result;
 use crate::logger::Logger;
 
 #[derive(Debug)]
-pub struct WaitFor<'a> {
+pub struct Waitz<'a> {
     pub command: &'a str,
     pub args: Vec<&'a str>,
     pub interval: u64,
@@ -13,7 +13,7 @@ pub struct WaitFor<'a> {
     pub logger: Logger,
 }
 
-impl WaitFor<'_> {
+impl Waitz<'_> {
     pub fn run(&self) {
         self.logger.debug(&format!("{:?}", &self));
 
