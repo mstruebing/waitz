@@ -4,6 +4,16 @@
 
 **Implemented enhancements:**
 
+- add automatic release [\#5](https://github.com/mstruebing/waitz/issues/5)
+
+**Merged pull requests:**
+
+- feat: automatic release [\#16](https://github.com/mstruebing/waitz/pull/16)
+
+## [0.1.0](https://github.com/mstruebing/waitz/tree/0.1.0) (2021-06-23)
+
+**Implemented enhancements:**
+
 - add debug flag [\#8](https://github.com/mstruebing/waitz/issues/8)
 - add verbose flag [\#7](https://github.com/mstruebing/waitz/issues/7)
 - add automatic changelog generation [\#4](https://github.com/mstruebing/waitz/issues/4)
