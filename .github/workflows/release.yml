@@ -1,0 +1,86 @@
+name: Release
+on:
+  push:
+    tags:
+      - "*.*.*"
+
+env:
+  CARGO_TERM_COLOR: always
+
+jobs:
+  release-linux:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v1
+      - name: Build
+        run: |
+          cargo build --release --target x86_64-unknown-linux-gnu
+          mv target/x86_64-unknown-linux-gnu/release/waitz ./waitz
+          chmod +x waitz
+          tar -czf waitz-linux-x86_64.tar.gz waitz
+          rm waitz
+          rustup target add x86_64-unknown-linux-musl
+          cargo build --release --target x86_64-unknown-linux-musl
+          mv target/x86_64-unknown-linux-musl/release/waitz ./waitz
+          chmod +x waitz
+          tar -czf waitz-alpine-x86_64.tar.gz waitz
+      - name: Publish release
+        uses: softprops/action-gh-release@v1
+        with:
+          files: waitz-*
+          draft: true
+          body_path: CHANGELOG.md
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+  release-darwin:
+    runs-on: macos-latest
+    steps:
+      - uses: actions/checkout@v1
+      - uses: actions-rs/toolchain@v1
+        with:
+          toolchain: stable
+      - name: Build
+        run: |
+          cargo build --release --target x86_64-apple-darwin
+          mv target/x86_64-apple-darwin/release/waitz ./waitz
+          chmod +x waitz
+          tar -czf waitz-darwin-x86_64.tar.gz waitz
+      - name: Publish release
+        uses: softprops/action-gh-release@v1
+        with:
+          files: waitz-*
+          draft: true
+          body_path: CHANGELOG.md
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+  release-crate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v1
+      - name: Build and publish to crates.io
+        run: |
+          cargo login ${{ secrets.CRATES_TOKEN }}
+          cargo publish
+
+  release-win:
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v1
+      - uses: actions-rs/toolchain@v1
+        with:
+          toolchain: stable
+      - name: Build
+        shell: powershell
+        run: |
+          cargo build --release --target x86_64-pc-windows-msvc
+          Compress-Archive -Path ".\target\x86_64-pc-windows-msvc\release\waitz.exe" -DestinationPath ".\waitz-win-x64.zip"
+      - name: Publish release
+        uses: softprops/action-gh-release@v1
+        with:
+          files: waitz-*
+          draft: true
+          body_path: CHANGELOG.md
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
