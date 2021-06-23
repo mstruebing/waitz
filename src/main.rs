@@ -9,10 +9,10 @@ use crate::logger::Logger;
 use crate::waitz::Waitz;
 
 fn main() -> Result<()> {
-    let matches = App::new("waitz")
-        .version("0.2.0")
-        .author("Max Strübing <mxstrbng@gmail.com>")
-        .about("Waits until the exit code of a program is zero")
+    let matches = App::new(env!("CARGO_PKG_NAME"))
+        .about(env!("CARGO_PKG_DESCRIPTION"))
+        .author(env!("CARGO_PKG_AUTHORS"))
+        .version(env!("CARGO_PKG_VERSION"))
         .arg(
             Arg::with_name("interval")
                 .long("interval")
