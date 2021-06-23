@@ -1,6 +1,6 @@
 # Changelog
 
-## [Unreleased](https://github.com/mstruebing/waitz/tree/HEAD)
+## [0.2.0](https://github.com/mstruebing/waitz/tree/0.2.0) (2021-06-23)
 
 **Implemented enhancements:**
 
