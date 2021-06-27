@@ -17,12 +17,7 @@ impl Waitz<'_> {
     pub fn run(&self) {
         self.logger.debug(&format!("{:?}", &self));
 
-        if self.no_retry {
-            is_successful(self.command, &self.args, &self.logger);
-            return;
-        }
-
-        while !is_successful(self.command, &self.args, &self.logger) {
+        while !is_successful(self.command, &self.args, &self.logger) && !self.no_retry {
             self.logger.verbose(&format!(
                 "Wait for {:?} milliseconds to run again",
                 self.interval
