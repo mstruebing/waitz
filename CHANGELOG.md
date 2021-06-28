@@ -4,6 +4,7 @@
 
 **Merged pull requests:**
 
+- refactor: convert to duration only one time instead of every loop run [\#20](https://github.com/mstruebing/waitz/pull/20)
 - feat: unify code paths for the `retry` and `no\_retry` paths [\#19](https://github.com/mstruebing/waitz/pull/19)
 
 ## [0.2.1](https://github.com/mstruebing/waitz/tree/0.2.1) (2021-06-23)
