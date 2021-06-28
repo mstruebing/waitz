@@ -1,5 +1,5 @@
 use std::process::{Command, ExitStatus};
-use std::{thread, time};
+use std::{thread, time::Duration};
 
 use crate::error::Result;
 use crate::logger::Logger;
@@ -8,7 +8,7 @@ use crate::logger::Logger;
 pub struct Waitz<'a> {
     pub command: &'a str,
     pub args: Vec<&'a str>,
-    pub interval: u64,
+    pub interval: Duration,
     pub no_retry: bool,
     pub logger: Logger,
 }
@@ -18,11 +18,9 @@ impl Waitz<'_> {
         self.logger.debug(&format!("{:?}", &self));
 
         while !is_successful(self.command, &self.args, &self.logger) && !self.no_retry {
-            self.logger.verbose(&format!(
-                "Wait for {:?} milliseconds to run again",
-                self.interval
-            ));
-            thread::sleep(time::Duration::from_millis(self.interval));
+            self.logger
+                .verbose(&format!("Wait for {:?} to run again", self.interval));
+            thread::sleep(self.interval);
         }
     }
 }
