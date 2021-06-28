@@ -4,6 +4,12 @@
 
 **Merged pull requests:**
 
+- feat: unify code paths for the `retry` and `no\_retry` paths [\#19](https://github.com/mstruebing/waitz/pull/19)
+
+## [0.2.1](https://github.com/mstruebing/waitz/tree/0.2.1) (2021-06-23)
+
+**Merged pull requests:**
+
 - refactor: use information from cargo.toml [\#18](https://github.com/mstruebing/waitz/pull/18)
 - docs: mention release page to grab a binary [\#17](https://github.com/mstruebing/waitz/pull/17)
 
