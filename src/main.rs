@@ -1,3 +1,5 @@
+use std::time::Duration;
+
 use clap::{App, Arg};
 
 mod error;
@@ -81,7 +83,7 @@ fn main() -> Result<()> {
     let waitz = Waitz {
         command,
         args,
-        interval,
+        interval: Duration::from_millis(interval),
         no_retry,
         logger,
     };
