@@ -1,6 +1,6 @@
 # Changelog
 
-## [Unreleased](https://github.com/mstruebing/waitz/tree/HEAD)
+## [0.2.2](https://github.com/mstruebing/waitz/tree/0.2.2) (2022-04-10)
 
 **Implemented enhancements:**
 
@@ -9,13 +9,13 @@
 **Merged pull requests:**
 
 - feat: pass `stdout` and `stderr` to the terminal [\#24](https://github.com/mstruebing/waitz/pull/24)
+- refactor: convert to duration only one time instead of every loop run [\#20](https://github.com/mstruebing/waitz/pull/20)
 - feat: unify code paths for the `retry` and `no\_retry` paths [\#19](https://github.com/mstruebing/waitz/pull/19)
 
 ## [0.2.1](https://github.com/mstruebing/waitz/tree/0.2.1) (2021-06-23)
 
 **Merged pull requests:**
 
-- refactor: convert to duration only one time instead of every loop run [\#20](https://github.com/mstruebing/waitz/pull/20)
 - refactor: use information from cargo.toml [\#18](https://github.com/mstruebing/waitz/pull/18)
 - docs: mention release page to grab a binary [\#17](https://github.com/mstruebing/waitz/pull/17)
 
@@ -24,10 +24,6 @@
 **Implemented enhancements:**
 
 - add automatic release [\#5](https://github.com/mstruebing/waitz/issues/5)
-
-**Merged pull requests:**
-
-- feat: automatic release [\#16](https://github.com/mstruebing/waitz/pull/16)
 
 ## [0.1.0](https://github.com/mstruebing/waitz/tree/0.1.0) (2021-06-23)
 
@@ -49,6 +45,7 @@
 
 **Merged pull requests:**
 
+- feat: automatic release [\#16](https://github.com/mstruebing/waitz/pull/16)
 - Feat/2/errors [\#15](https://github.com/mstruebing/waitz/pull/15)
 - refactor: make `wait\_for` an own module [\#14](https://github.com/mstruebing/waitz/pull/14)
 - docs: add readme [\#12](https://github.com/mstruebing/waitz/pull/12)
