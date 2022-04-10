@@ -2,15 +2,20 @@
 
 ## [Unreleased](https://github.com/mstruebing/waitz/tree/HEAD)
 
+**Implemented enhancements:**
+
+- Add option to print the output of the command to stdout/stderr [\#21](https://github.com/mstruebing/waitz/issues/21)
+
 **Merged pull requests:**
 
-- refactor: convert to duration only one time instead of every loop run [\#20](https://github.com/mstruebing/waitz/pull/20)
+- feat: pass `stdout` and `stderr` to the terminal [\#24](https://github.com/mstruebing/waitz/pull/24)
 - feat: unify code paths for the `retry` and `no\_retry` paths [\#19](https://github.com/mstruebing/waitz/pull/19)
 
 ## [0.2.1](https://github.com/mstruebing/waitz/tree/0.2.1) (2021-06-23)
 
 **Merged pull requests:**
 
+- refactor: convert to duration only one time instead of every loop run [\#20](https://github.com/mstruebing/waitz/pull/20)
 - refactor: use information from cargo.toml [\#18](https://github.com/mstruebing/waitz/pull/18)
 - docs: mention release page to grab a binary [\#17](https://github.com/mstruebing/waitz/pull/17)
 
