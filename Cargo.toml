@@ -1,6 +1,6 @@
 [package]
 name = "waitz"
-version = "0.2.1"
+version = "0.2.2"
 authors = ["Max Strübing <mxstrbng@gmail.com>"]
 edition = "2018"
 description = "Waits (retries) a command until it exits with 0"

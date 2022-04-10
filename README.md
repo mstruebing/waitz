@@ -15,9 +15,9 @@ like waiting for a specific URL to become available after booting up a server in
 # Usage
 
 ```
-waitz 0.2.0
+waitz 0.2.2
 Max Strübing <mxstrbng@gmail.com>
-Waits until the exit code of a program is zero
+Waits (retries) a command until it exits with 0
 
 USAGE:
     waitz [FLAGS] [OPTIONS] <COMMAND>...
@@ -27,7 +27,7 @@ FLAGS:
     -h, --help        Prints help information
     -n, --no-retry    Don't try to rerun the command in case it fails with non-zero exit code
     -V, --version     Prints version information
-        --verbose     Outputs verbose information
+        --verbose     Forwards stdout/stderr from the command to the terminal
 
 OPTIONS:
     -i, --interval <interval>    in which interval the command should be retried in milliseconds [default: 1000]
