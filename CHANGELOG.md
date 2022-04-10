@@ -1,6 +1,6 @@
 # Changelog
 
-## [0.2.2](https://github.com/mstruebing/waitz/tree/0.2.2) (2022-04-10)
+## [Unreleased](https://github.com/mstruebing/waitz/tree/HEAD)
 
 **Implemented enhancements:**
 
@@ -25,6 +25,10 @@
 
 - add automatic release [\#5](https://github.com/mstruebing/waitz/issues/5)
 
+**Merged pull requests:**
+
+- feat: automatic release [\#16](https://github.com/mstruebing/waitz/pull/16)
+
 ## [0.1.0](https://github.com/mstruebing/waitz/tree/0.1.0) (2021-06-23)
 
 **Implemented enhancements:**
@@ -45,7 +49,6 @@
 
 **Merged pull requests:**
 
-- feat: automatic release [\#16](https://github.com/mstruebing/waitz/pull/16)
 - Feat/2/errors [\#15](https://github.com/mstruebing/waitz/pull/15)
 - refactor: make `wait\_for` an own module [\#14](https://github.com/mstruebing/waitz/pull/14)
 - docs: add readme [\#12](https://github.com/mstruebing/waitz/pull/12)
