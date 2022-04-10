@@ -5,15 +5,21 @@ pub struct Logger {
 }
 
 impl Logger {
-    pub fn verbose(&self, msg: &str) {
-        if self.verbose || self.debug {
+    pub fn debug(&self, msg: &str) {
+        if self.debug {
             println!("{}", msg)
         }
     }
 
-    pub fn debug(&self, msg: &str) {
-        if self.debug {
-            println!("{}", msg)
+    pub fn stdout(&self, msg: &str) {
+        if self.verbose && !msg.is_empty() {
+            print!("{}", msg)
+        }
+    }
+
+    pub fn stderr(&self, msg: &str) {
+        if self.verbose && !msg.is_empty() {
+            eprint!("{}", msg)
         }
     }
 }

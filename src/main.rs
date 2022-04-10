@@ -39,7 +39,7 @@ fn main() -> Result<()> {
                 .value_name("verbose")
                 .takes_value(false)
                 .required(false)
-                .help("Outputs verbose information"),
+                .help("Forwards stdout/stderr from the command to the terminal"),
         )
         .arg(
             Arg::with_name("debug")
@@ -59,9 +59,10 @@ fn main() -> Result<()> {
 
     let verbose = matches.is_present("verbose");
     let debug = matches.is_present("debug");
+
     let logger = Logger { verbose, debug };
 
-    logger.debug(&format!("Got args: {:?}", matches));
+    logger.debug(&format!("Arguments: {:?}", matches));
 
     let interval = matches
         .value_of("interval")

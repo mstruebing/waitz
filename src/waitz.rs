@@ -1,5 +1,5 @@
-use std::process::{Command, ExitStatus};
-use std::{thread, time::Duration};
+use std::process::{Command, Output};
+use std::{str, thread, time::Duration};
 
 use crate::error::Result;
 use crate::logger::Logger;
@@ -19,30 +19,30 @@ impl Waitz<'_> {
 
         while !is_successful(self.command, &self.args, &self.logger) && !self.no_retry {
             self.logger
-                .verbose(&format!("Wait for {:?} to run again", self.interval));
+                .debug(&format!("Wait for {:?} to run again", self.interval));
             thread::sleep(self.interval);
         }
     }
 }
 
 fn is_successful(command: &str, args: &[&str], logger: &Logger) -> bool {
-    logger.verbose(&format!("Running {} {}", command, args.join(" ")));
-    let exit_code = get_exit_code(command, args);
-    logger.debug(&format!("Got exit code: {:?}", exit_code));
+    logger.debug(&format!("Running {} {}", command, args.join(" ")));
+    let result = run(command, args);
+    logger.debug(&format!("Received: {:?}", result));
 
-    match exit_code {
-        Ok(code) => {
-            logger.verbose("Command exited successful");
-            code.success()
+    match result {
+        Ok(output) => {
+            logger.stdout(std::str::from_utf8(&output.stdout).unwrap());
+            logger.stderr(std::str::from_utf8(&output.stderr).unwrap());
+            output.status.success()
         }
         Err(_err) => {
-            logger.verbose("Command exited unsuccessful");
+            logger.debug("Could not run command");
             false
         }
     }
 }
 
-fn get_exit_code(command: &str, args: &[&str]) -> Result<ExitStatus> {
-    let output = Command::new(command).args(args).output()?;
-    Ok(output.status)
+fn run(command: &str, args: &[&str]) -> Result<Output> {
+    Ok(Command::new(command).args(args).output()?)
 }
