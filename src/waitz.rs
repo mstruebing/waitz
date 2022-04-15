@@ -9,15 +9,21 @@ pub struct Waitz<'a> {
     pub command: &'a str,
     pub args: Vec<&'a str>,
     pub interval: Duration,
-    pub no_retry: bool,
+    pub max_retries: u64,
     pub logger: Logger,
 }
 
 impl Waitz<'_> {
     pub fn run(&self) {
         self.logger.debug(&format!("{:?}", &self));
+        let mut runs = 0;
 
-        while !is_successful(self.command, &self.args, &self.logger) && !self.no_retry {
+        while (self.max_retries == 0 || runs < self.max_retries)
+            && !is_successful(self.command, &self.args, &self.logger)
+        {
+            runs += 1;
+
+            self.logger.debug(&format!("Run {:?}", runs));
             self.logger
                 .debug(&format!("Wait for {:?} to run again", self.interval));
             thread::sleep(self.interval);
