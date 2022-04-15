@@ -1,15 +1,11 @@
 # Changelog
 
-## [Unreleased](https://github.com/mstruebing/waitz/tree/HEAD)
+## [0.3.0](https://github.com/mstruebing/waitz/tree/0.3.0) (2022-04-15)
 
 **Implemented enhancements:**
 
 - Add a max retry option [\#22](https://github.com/mstruebing/waitz/issues/22)
 - feat: max-retry [\#25](https://github.com/mstruebing/waitz/pull/25)
-
-**Merged pull requests:**
-
-- Feat/2/errors [\#15](https://github.com/mstruebing/waitz/pull/15)
 
 ## [0.2.2](https://github.com/mstruebing/waitz/tree/0.2.2) (2022-04-10)
 
@@ -19,7 +15,6 @@
 
 **Merged pull requests:**
 
-- feat: pass `stdout` and `stderr` to the terminal [\#24](https://github.com/mstruebing/waitz/pull/24)
 - refactor: convert to duration only one time instead of every loop run [\#20](https://github.com/mstruebing/waitz/pull/20)
 - feat: unify code paths for the `retry` and `no\_retry` paths [\#19](https://github.com/mstruebing/waitz/pull/19)
 
@@ -60,6 +55,8 @@
 
 **Merged pull requests:**
 
+- feat: pass `stdout` and `stderr` to the terminal [\#24](https://github.com/mstruebing/waitz/pull/24)
+- Feat/2/errors [\#15](https://github.com/mstruebing/waitz/pull/15)
 - refactor: make `wait\_for` an own module [\#14](https://github.com/mstruebing/waitz/pull/14)
 - docs: add readme [\#12](https://github.com/mstruebing/waitz/pull/12)
 - feat: add debug flag [\#11](https://github.com/mstruebing/waitz/pull/11)
