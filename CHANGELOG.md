@@ -4,6 +4,17 @@
 
 **Implemented enhancements:**
 
+- Add a max retry option [\#22](https://github.com/mstruebing/waitz/issues/22)
+- feat: max-retry [\#25](https://github.com/mstruebing/waitz/pull/25)
+
+**Merged pull requests:**
+
+- Feat/2/errors [\#15](https://github.com/mstruebing/waitz/pull/15)
+
+## [0.2.2](https://github.com/mstruebing/waitz/tree/0.2.2) (2022-04-10)
+
+**Implemented enhancements:**
+
 - Add option to print the output of the command to stdout/stderr [\#21](https://github.com/mstruebing/waitz/issues/21)
 
 **Merged pull requests:**
@@ -49,7 +60,6 @@
 
 **Merged pull requests:**
 
-- Feat/2/errors [\#15](https://github.com/mstruebing/waitz/pull/15)
 - refactor: make `wait\_for` an own module [\#14](https://github.com/mstruebing/waitz/pull/14)
 - docs: add readme [\#12](https://github.com/mstruebing/waitz/pull/12)
 - feat: add debug flag [\#11](https://github.com/mstruebing/waitz/pull/11)
