@@ -15,10 +15,6 @@ like waiting for a specific URL to become available after booting up a server in
 # Usage
 
 ```
-waitz 0.2.2
-Max Strübing <mxstrbng@gmail.com>
-Waits (retries) a command until it exits with 0
-
 USAGE:
     waitz [FLAGS] [OPTIONS] <COMMAND>...
 
@@ -30,7 +26,8 @@ FLAGS:
         --verbose     Forwards stdout/stderr from the command to the terminal
 
 OPTIONS:
-    -i, --interval <interval>    in which interval the command should be retried in milliseconds [default: 1000]
+    -i, --interval <interval>          in which interval the command should be retried in milliseconds [default: 1000]
+    -r, --max-retries <max-retries>    Positive integer how often the command should be retried [default: 0]
 
 ARGS:
     <COMMAND>...    Which command should be waited for
